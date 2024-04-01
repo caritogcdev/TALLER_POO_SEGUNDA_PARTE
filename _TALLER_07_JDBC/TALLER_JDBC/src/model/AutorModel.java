@@ -27,11 +27,11 @@ public class AutorModel implements CRUD {
             //3. Escribir el SQL
             String sql = "INSERT INTO autores (nombre, nacionalidad) VALUES (?,?);";
 
-            //4. Preparar el Sratement, además agregar la propiedad RETURN_GENERATED_KEYS que hace que la sentencia SQL nos retorne los id generados por la base de datos
+            //4. Preparar el Statement, además agregar la propiedad RETURN_GENERATED_KEYS que hace que la sentencia SQL nos retorne los id generados por la base de datos
             // Después de insertar en la db, también queremos que nos devuelva las llaves generadas, es decir, que nos devuelva el id que generó la DB
             PreparedStatement objPrepare = objConnection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
 
-            // 5. Asignar valor a los ? ? ?
+            // 5. Asignar valor a los ? ?
             objPrepare.setString(1, objAutor.getNombre());
             objPrepare.setString(2, objAutor.getNacionalidad());
 
@@ -77,7 +77,7 @@ public class AutorModel implements CRUD {
             // Ejecutar el query y obtener el resultado (ResultSet)
             ResultSet objResult = objPrepare.executeQuery();
 
-            //6. Mientras haya un resultado siguiente, gacer:
+            //6. Mientras haya un resultado siguiente, hacer:
             while (objResult.next()){
 
                 //Por cada iteración de la DB vamos a crear un autor que luego lo vamos a llenar

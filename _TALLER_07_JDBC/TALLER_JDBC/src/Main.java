@@ -1,4 +1,5 @@
 import controller.AutorController;
+import controller.LibroController;
 import database.ConfigDB;
 
 import javax.swing.*;
@@ -8,6 +9,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Holaaaa desde el Main!");
+
         //Ensayo de conexión DB
         ConfigDB.openConnection();
         ConfigDB.closeConnection();
@@ -21,7 +23,7 @@ public class Main {
                     3. Update Autor.
                     4. Delete Autor.
                     5. Get autor by name.
-                    6. Exit.
+                    6. EXIT AUTOR MENU.
                     
                     Choose an option:
                     """);
@@ -34,7 +36,7 @@ public class Main {
                 case "2":
                     AutorController.create();
                     break;
-                case   "3":
+                case "3":
                     AutorController.update();
                     break;
                 case "4":
@@ -47,6 +49,39 @@ public class Main {
 
         } while (!option.equals("6"));
 
+        
+        do {
+            option = JOptionPane.showInputDialog("""
+                    1. List Books.
+                    2. Insert Book.
+                    3. Update Book.
+                    4. Delete Book.
+                    5. Get book by name.
+                    6. EXIT BOOK MENU.
+                    
+                    Choose an option:
+                    """);
+
+            switch (option){
+                case "1":
+                    // El controlador tiene métodos estáticos entonces no se instancia y se llama de la siguiente manera
+                    LibroController.getAll();
+                    break;
+                case "2":
+                    LibroController.create();
+                    break;
+                case "3":
+                    LibroController.update();
+                    break;
+                case "4":
+                    LibroController.delete();
+                    break;
+                case "5":
+                    LibroController.getByName();
+                    break;
+            }
+
+        } while (!option.equals("6"));
 
     }
 }
